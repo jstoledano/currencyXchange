@@ -38,6 +38,19 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>3.30.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jline/jline-reader -->
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-reader</artifactId>
+            <version>3.30.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>

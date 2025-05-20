@@ -4,18 +4,17 @@ import org.jline.reader.*;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.reader.impl.completer.StringsCompleter;
 import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
-
-import java.io.IOException;
 
 public class PromptService {
+    private final Terminal terminal;
+
+    public PromptService(Terminal terminal) {
+        this.terminal = terminal;
+    }
 
     public String selectCurrency(String[] currencies) {
         try {
-            // Crear el terminal
-            Terminal terminal = TerminalBuilder.builder().system(true).build();
-
-            // Configurar el LineReader con un Completer para las opciones
+            // Usar el terminal proporcionado
             LineReader reader = LineReaderBuilder.builder()
                     .terminal(terminal)
                     .completer(new StringsCompleter(currencies))
@@ -35,7 +34,7 @@ public class PromptService {
             // Si la moneda no es válida, muestra un mensaje de error
             System.out.println("Moneda no válida. Intente de nuevo.");
             return selectCurrency(currencies); // Llamada recursiva
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Error al crear el terminal interactivo.", e);
         }
     }
